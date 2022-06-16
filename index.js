@@ -33,17 +33,33 @@ function render() {
     };
 
     html += `
-      <div>${todo.text}</div>   
+      <div>
+        ${todo.text}
+        <button data-id='${todo.id}'>Сделано</button>
+      </div>
+
     `;
   })
 
   todosNode.innerHTML = html;
 }
 
-btnNode.addEventListener('click', () =>{
+btnNode.addEventListener('click', () => {
   const text = inputNode.value;
 
   addTodo(text);
+
+  render();
+});
+
+todosNode.addEventListener('click', (event) =>{
+  if (event.target.tagName !== 'BUTTON') {
+    return;
+  }
+
+  const id = event.target.dataset.id;
+
+  deleteTodo(id);
 
   render();
 });
