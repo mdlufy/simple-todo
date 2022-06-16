@@ -1,4 +1,7 @@
 const todosNode = document.querySelector('.js-todos');
+const inputNode = document.querySelector('.js-input');
+const btnNode = document.querySelector('.js-btn');
+
 let todos = [];
 
 function addTodo(text) {
@@ -37,6 +40,12 @@ function render() {
   todosNode.innerHTML = html;
 }
 
-addTodo('Сходить в магазин')
+btnNode.addEventListener('click', () =>{
+  const text = inputNode.value;
+
+  addTodo(text);
+
+  render();
+});
 
 render();
