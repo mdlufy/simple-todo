@@ -50,7 +50,7 @@ function render() {
 }
 
 inputNode.addEventListener('keypress', (keyPressed) => {
-    if (keyPressed.which === 13) {
+    if (keyPressed.which === 13 && inputNode.value !== '') {
         const text = inputNode.value;
         inputNode.value = '';
 
