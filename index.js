@@ -38,8 +38,9 @@ function render() {
 
         html += `
       <div>
+        <button data-id='${todo.id}'>Сделано</button>
         ${todo.text}
-        <button data-id='${todo.id}'>Сделано</button><br><br>
+        <br><br>
       </div>
 
     `;
