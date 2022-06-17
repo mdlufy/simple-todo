@@ -1,6 +1,5 @@
 const todosNode = document.querySelector('.js-todos');
 const inputNode = document.querySelector('.js-input');
-const btnNode = document.querySelector('.js-btn');
 const btnDeleteNode = document.querySelector('.js-delete-btn');
 
 let todos = [];
@@ -49,13 +48,17 @@ function render() {
     todosNode.innerHTML = html;
 }
 
-btnNode.addEventListener('click', () => {
-    const text = inputNode.value;
+inputNode.addEventListener('keypress', (keyPressed) => {
+    if (keyPressed.which === 13) {
+        const text = inputNode.value;
+        inputNode.value = '';
 
-    addTodo(text);
+        addTodo(text);
 
-    render();
-});
+        render();
+
+    }
+})
 
 todosNode.addEventListener('click', (event) => {
     if (event.target.tagName !== 'BUTTON') {
