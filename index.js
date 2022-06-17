@@ -5,63 +5,63 @@ const btnNode = document.querySelector('.js-btn');
 let todos = [];
 
 function addTodo(text) {
-  const todo = {
-    text,
-    done: false,
-    id: `${Math.random()}`
-  };
+    const todo = {
+        text,
+        done: false,
+        id: `${Math.random()}`
+    };
 
-  todos.push(todo);
+    todos.push(todo);
 }
 
 function deleteTodo(id) {
-  todos.forEach(todo => {
-    if (todo.id === id) {
-      todo.done = true;
-    }
-  })
+    todos.forEach(todo => {
+        if (todo.id === id) {
+            todo.done = true;
+        }
+    })
 }
 
 function render() {
-  console.log(todos);
+    console.log(todos);
 
-  let html = '';
+    let html = '';
 
-  todos.forEach(todo => {
-    if (todo.done) {
-      return;
-    };
+    todos.forEach(todo => {
+        if (todo.done) {
+            return;
+        };
 
-    html += `
+        html += `
       <div>
         ${todo.text}
         <button data-id='${todo.id}'>Сделано</button>
       </div>
 
     `;
-  })
+    })
 
-  todosNode.innerHTML = html;
+    todosNode.innerHTML = html;
 }
 
 btnNode.addEventListener('click', () => {
-  const text = inputNode.value;
+    const text = inputNode.value;
 
-  addTodo(text);
+    addTodo(text);
 
-  render();
+    render();
 });
 
-todosNode.addEventListener('click', (event) =>{
-  if (event.target.tagName !== 'BUTTON') {
-    return;
-  }
+todosNode.addEventListener('click', (event) => {
+    if (event.target.tagName !== 'BUTTON') {
+        return;
+    }
 
-  const id = event.target.dataset.id;
+    const id = event.target.dataset.id;
 
-  deleteTodo(id);
+    deleteTodo(id);
 
-  render();
+    render();
 });
 
 render();
