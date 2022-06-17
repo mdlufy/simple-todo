@@ -1,6 +1,7 @@
 const todosNode = document.querySelector('.js-todos');
 const inputNode = document.querySelector('.js-input');
 const btnNode = document.querySelector('.js-btn');
+const btnDeleteNode = document.querySelector('.js-delete-btn');
 
 let todos = [];
 
@@ -22,6 +23,10 @@ function deleteTodo(id) {
     })
 }
 
+function deleteAllTodo() {
+    todos.length = 0;
+}
+
 function render() {
     console.log(todos);
 
@@ -35,7 +40,7 @@ function render() {
         html += `
       <div>
         ${todo.text}
-        <button data-id='${todo.id}'>Сделано</button>
+        <button data-id='${todo.id}'>Сделано</button><br><br>
       </div>
 
     `;
@@ -60,6 +65,12 @@ todosNode.addEventListener('click', (event) => {
     const id = event.target.dataset.id;
 
     deleteTodo(id);
+
+    render();
+});
+
+btnDeleteNode.addEventListener('click', () => {
+    deleteAllTodo();
 
     render();
 });
