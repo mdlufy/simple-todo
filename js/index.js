@@ -33,17 +33,22 @@ function render() {
 
     todos.forEach(todo => {
         if (todo.done) {
-            return;
-        };
-
-        html += `
-      <div>
-        <button data-id='${todo.id}'>Сделано</button>
-        ${todo.text}
-        <br><br>
-      </div>
-
-    `;
+            html += `
+            <div>
+                <strike>${todo.text}</strike>
+                <br><br>
+            </div>
+            `
+        }
+        else {
+            html += `
+            <div>
+                <button data-id='${todo.id}'>Сделано</button>
+                ${todo.text}
+                <br><br>
+            </div>
+            `;
+        }
     })
 
     todosNode.innerHTML = html;
@@ -57,7 +62,6 @@ inputNode.addEventListener('keypress', (keyPressed) => {
         addTodo(text);
 
         render();
-
     }
 })
 
